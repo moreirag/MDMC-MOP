@@ -14,8 +14,8 @@ multi-objective optimization [educational forum]. IEEE Computational Intelligenc
 Magazine 12(4), 73–87 (2017). https://doi.org/10.1109/MCI.2017.2742868"
 
 *  Matlab code implemented is available.
-  - C-DWU is named ROIDWUmoea
-  - C-NSGAII is named ROINSGAII
+  * C-DWU is named ROIDWUmoea
+  * C-NSGAII is named ROINSGAII
 
 
 
