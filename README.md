@@ -13,9 +13,13 @@ All experiments were conducted using the PLATEMO platform.
 multi-objective optimization [educational forum]. IEEE Computational Intelligence
 Magazine 12(4), 73–87 (2017). https://doi.org/10.1109/MCI.2017.2742868"
 
-*  Matlab code implemented is available.
-  ** C-DWU is named ROIDWUmoea
+The MATLAB code implemented is available.
+  * C-DWU is named ROIDWUmoea
   * C-NSGAII is named ROINSGAII
+
+The results are available in the data folder.
+
+
 
 
 
