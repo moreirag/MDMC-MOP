@@ -1,4 +1,5 @@
 # Chord diagram, Angular mapping and Parallel coordinates VISualization
+# Meneghini, I.R., Koochaksaraei, R.H., Guimarães, F.G., Gaspar-Cunha, A.: Information to the eye of the beholder: Data visualization for many-objective optimization. In: 2018 IEEE Congress on Evolutionary Computation (CEC). pp. 1–8 (2018).https://doi.org/10.1109/CEC.2018.8477889
 
 library(circlize) 
 
