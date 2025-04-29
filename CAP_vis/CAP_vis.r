@@ -1,13 +1,12 @@
 # Chord diagram, Angular mapping and Parallel coordinates VISualization
-# Meneghini, I.R., Koochaksaraei, R.H., Guimarães, F.G., Gaspar-Cunha, A.: Information to the eye of the beholder: Data visualization for many-objective optimization. In: 2018 IEEE Congress on Evolutionary Computation (CEC). pp. 1–8 (2018).https://doi.org/10.1109/CEC.2018.8477889
 
-library(circlize) 
-
+library(circlize)
 
 
 # Read data ----
+#d1 <- read.csv("plano_4D.csv", header = FALSE)
+d1 <- read.csv("wfg4_dwu-dec.csv", header = FALSE)
 #d1 <- read.csv("wfg4_nsgaii-dec.csv", header = FALSE)
-#d1 <- read.csv("wfg4_dwu-dec.csv", header = FALSE)
 npop_d1 <- nrow(d1) # population size
 nobj_d1 <- ncol(d1) # dimension
 na_d1 <- matrix(data = NA, nrow = npop_d1, ncol = 3)
@@ -50,6 +49,7 @@ circos.trackPlotRegion(
 circos.trackPlotRegion(
   factors = 1:nobj_d1,
   ylim = c(min(c(na_d1$rho)), max(c(na_d1$rho))),
+  track.height = 0.35,
   panel.fun = function(x, y) {
     xlim = get.cell.meta.data("xlim")
     ylim = get.cell.meta.data("ylim")
@@ -66,46 +66,11 @@ circos.trackPoints(na_d1$axis,
                    pch = 16,
                    cex = 0.4)
 
-# Parallel coordinates ----
-circos.clear()
-par(new = TRUE)
-circos.par("track.height" = 0.22)
-circos.par("canvas.xlim" = c(-1.5, 1.5),"canvas.ylim" = c(-1.5, 1.5))
-circos.par(gap.after = c(rep(2, nobj_d1 - 1), 15), start.degree = 90)
-circos.initialize(factors = 1:nobj_d1,x = 1:nobj_d1,xlim = c(1, nobj_d1))
-circos.trackPlotRegion(factors = 1:nobj_d1,
-                       x = 1:nobj_d1,
-                       ylim = c(min(d1), max(d1)),
-                       track.margin = c(0.01,0.1)
-                       )
-for (i in 1:nobj_d1) {
-  track.margin = c(0,0.5)
-  circos.xaxis(
-    h = "top",
-    sector.index = i,
-    major.tick.length = .7,
-    labels.cex = 0.5
-  )
-}
-
-for (i in 1:npop_d1) {
-  circos.lines(
-    1:nobj_d1,
-    as.numeric(d1[i, ]),
-    lwd = 0.1,
-    sector.index = na_d1$axis[i],
-    col = "blue"
-  )
-}
-circos.yaxis(side = "left",
-             sector.index = 1,
-             labels.cex = 0.5)
-
 #  Chord Diagram ----
 circos.clear()
-circos.par(gap.after = c(rep(2, nobj_d1 - 1), 15), start.degree = 90,track.height = 0.15)
+circos.par(gap.after = c(rep(2, nobj_d1 - 1), 15), start.degree = 90,track.height = 0.2)
 par(new = TRUE) # <- magic
-a<-2.3
+a<-2
 circos.par("canvas.xlim" = c(-a, a),"canvas.ylim" = c(-a, a))
 circos.initialize(factors = rep(1:nobj_d1, length.out = npop_d1),xlim = c(0, max(d1)))
 circos.track(
@@ -113,7 +78,7 @@ circos.track(
   bg.border=c(0,0,0,0),
   panel.fun = function(x, y) {
     circos.axis(labels.cex = 0.5,
-                major.tick.length = .7,
+                major.tick.length = .9,
                 h = "bottom",
                 lwd = 1)
   }
